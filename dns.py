@@ -21,7 +21,7 @@ class DNS():
     def regulator(self):
         with open(os.path.join(self.folder_results,"clean_wildcards.txt"), 'r') as f:
             for wildcard in f:
-                os.system('python3 regulator.py -t {} -f {} -o regulator_{}'.format(wildcard.strip(), os.path.join(self.folder_results, "subfinder_results.txt"), os.path.join(self.folder_dns, wildcard)))
+                os.system('python3 regulator.py -t {} -f {} -o {}'.format(wildcard.strip(), os.path.join(self.folder_results, "subfinder_results.txt"), os.path.join(self.folder_dns, "regulator_" + wildcard)))
 
     def resolveRegulator(self):
         with open(os.path.join(self.folder_results,"clean_wildcards.txt"), 'r') as f:

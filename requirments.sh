@@ -14,3 +14,5 @@ pip install regex
 pip install argparse
 pip install requests
 pip3 install py-altdns==1.0.2
+
+#https://github.com/cramppet/regulator
