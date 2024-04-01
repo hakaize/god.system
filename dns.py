@@ -12,8 +12,8 @@ class DNS():
     def altDns(self):
         command = 'altdns -i {} -o {} -w {} -t {}'.format(
             os.path.join(self.folder_results, "subfinder_results.txt"),
-            os.path.join(self.folder_results, "altdns_results.txt"),
-            os.path.join(self.folder_results, "words.txt"),
+            os.path.join(self.folder_dns, "altdns_results.txt"),
+            os.path.join(self.folder_results, "wordlists", "altdns_words.txt"),
             self.threads
         )
         os.system(command)

@@ -39,7 +39,9 @@ if __name__ == "__main__":
 
     dns.getResolvers()
     dns.getWordlist()
+    dns.altDns()
     dns.regulator()
+    dns.resolveRegulator()
    
     #dominios = subfinder.leerDominios()
     #subfinder.generarSubdominios() 
