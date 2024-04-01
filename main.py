@@ -37,10 +37,10 @@ if __name__ == "__main__":
     parser = Parser(folder_name)
     xss_tester = Xss(folder_name, xss)
 
-    dns.getResolvers()
-    dns.getWordlist()
-    dns.altDns()
-    dns.regulator()
+    #dns.getResolvers()
+    #dns.getWordlist()
+    #dns.altDns()  
+    #dns.regulator()
     dns.resolveRegulator()
    
     #dominios = subfinder.leerDominios()

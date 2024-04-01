@@ -26,10 +26,17 @@ class DNS():
     def resolveRegulator(self):
         with open(os.path.join(self.folder_results,"clean_wildcards.txt"), 'r') as f:
             for wildcard in f:
-                os.system('puredns regulator_{} --write {} | httpx -fr -sc -td -title -bp -silent -o {}' .format(
-                os.path.join(self.folder_dns, wildcard),
-                os.path.join(self.folder_dns, "regulator_resolve" + wildcard),
-                os.path.join(self.folder_dns, "regulator_resolve_httpx_" + wildcard)
+                print('puredns resolve {} -r {} --write {} | httpx -fr -sc -td -title -bp -silent -o {}' .format(
+                os.path.join(self.folder_dns, "regulator_" + wildcard.strip()),
+                os.path.join(self.folder_results, "wordlists", "resolvers.txt"),
+                os.path.join(self.folder_dns, "regulator_resolve_" + wildcard.strip()),
+                os.path.join(self.folder_dns, "regulator_resolve_httpx_" + wildcard.strip())
+        ))
+                os.system('puredns {} -r {} --write {} | httpx -fr -sc -td -title -bp -silent -o {}' .format(
+                os.path.join(self.folder_dns, "regulator_" + wildcard.strip()),
+                os.path.join(self.folder_results, "wordlists", "resolvers.txt"),
+                os.path.join(self.folder_dns, "regulator_resolve_" + wildcard.strip()),
+                os.path.join(self.folder_dns, "regulator_resolve_httpx_" + wildcard.strip())
         ))
     
     def getWordlist(self):
@@ -39,7 +46,7 @@ class DNS():
                 f.write(r.text)
 
     def resolvePureDns(self):
-        command = 'puredns {} --write puredns_valids.txt | httpx -fr -sc -td -title -bp -silent -o puredns_httpx.txt' .format(
+        command = 'puredns resolve {} --write puredns_valids.txt | httpx -fr -sc -td -title -bp -silent -o puredns_httpx.txt' .format(
             os.path.join(self.folder_dns, "altdns_results.txt")
         )
 
