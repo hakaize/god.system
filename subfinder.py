@@ -20,10 +20,8 @@ class Subfinder:
             context = browser.new_context(user_agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0")
             page = browser.new_page()
             
-            # navegar a temp-mail
             page.goto(self.subf_url)
 
-            # esperamos a que se cargue el DOM y genere el email
             page.wait_for_timeout(3000)
            
             html = page.content()
