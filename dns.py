@@ -27,9 +27,9 @@ class DNS():
         with open(os.path.join(self.folder_results,"clean_wildcards.txt"), 'r') as f:
             for wildcard in f:
                 os.system('puredns regulator_{} --write {} | httpx -fr -sc -td -title -bp -silent -o {}' .format(
-            os.path.join(self.folder_dns, wildcard),
-            os.path.join(self.folder_dns, "regulator_resolve" + wildcard),
-            os.path.join(self.folder_dns, "regulator_resolve_httpx_" + wildcard)
+                os.path.join(self.folder_dns, wildcard),
+                os.path.join(self.folder_dns, "regulator_resolve" + wildcard),
+                os.path.join(self.folder_dns, "regulator_resolve_httpx_" + wildcard)
         ))
     
     def getWordlist(self):
