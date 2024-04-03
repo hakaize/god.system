@@ -28,13 +28,13 @@ class DNS():
             for wildcard in f:
                 print('puredns resolve {} -r {} --write {} | httpx -fr -sc -td -title -bp -silent -o {}' .format(
                 os.path.join(self.folder_dns, "regulator_" + wildcard.strip()),
-                os.path.join(self.folder_results, "wordlists", "resolvers.txt"),
-                os.path.join(self.folder_dns, "regulator_resolve_" + wildcard.strip()),
-                os.path.join(self.folder_dns, "regulator_resolve_httpx_" + wildcard.strip())
+                os.path.join(self.folder_results, "wordlists", "resolvers.txt".strip()),
+                os.path.join(self.folder_dns, "resolve_regulator" + wildcard.strip()),
+                os.path.join(self.folder_dns, "resolve_regulator_httpx_" + wildcard.strip())
         ))
-                os.system('puredns {} -r {} --write {} | httpx -fr -sc -td -title -bp -silent -o {}' .format(
+                os.system('puredns resolve {} -r {} --write {} | httpx -fr -sc -td -title -bp -silent -o {}' .format(
                 os.path.join(self.folder_dns, "regulator_" + wildcard.strip()),
-                os.path.join(self.folder_results, "wordlists", "resolvers.txt"),
+                os.path.join(self.folder_results, "wordlists", "resolvers.txt".strip()),
                 os.path.join(self.folder_dns, "resolve_regulator" + wildcard.strip()),
                 os.path.join(self.folder_dns, "resolve_regulator_httpx_" + wildcard.strip())
         ))
