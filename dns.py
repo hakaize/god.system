@@ -57,6 +57,9 @@ class DNS():
             if not match:
                 os.system('cat {} | anew {}'.format(os.path.join(self.folder_dns, file),os.path.join(self.folder_dns,"all_dns_subdomains.txt")))
         os.system('rm {}'.format(os.path.join(self.folder_dns, "resolve_*")))
+    
+    def allDomainsHttpx(self):
+        os.system('httpx -fr -sc -td -title -bp -silent -o {}'.format(os.path.join(self.folder_dns, "all_dns_subdomains_httpx.txt")))
 
     def getResolvers(self):
         r = requests.get("https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt", verify=False)
