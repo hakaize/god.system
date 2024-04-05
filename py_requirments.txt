@@ -9,3 +9,4 @@ datrie
 dnspython
 tldextract
 editdistance
+bbot
