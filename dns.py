@@ -37,7 +37,7 @@ class DNS():
         if r.status_code == 200:
             with open(os.path.join(self.folder_results, "wordlists","altdns_words.txt"), 'w') as f:
                 f.write(r.text)
-
+    
     def resolvePureDns(self):
         command = 'puredns resolve {} --write puredns_valids.txt' .format(
             os.path.join(self.folder_dns, "altdns_results.txt")

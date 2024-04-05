@@ -1,4 +1,4 @@
-import os, argparse, requests, signal
+import os, argparse, signal
 from subfinder import Subfinder
 from initial_recon import Initial
 from vulns_parser import Parser

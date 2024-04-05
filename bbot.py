@@ -1,4 +1,4 @@
-import system, os
+import os
 
 class BBOT():
 
