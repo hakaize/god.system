@@ -32,9 +32,3 @@ class Wordpress():
 
     def getHttpx(self):
         os.system('cat {} | httpx -fr -td -o all_subdomains_httpx_wp.txt'.format(os.path.join(self.folder_wpscan, "all_subdomains.txt")))
-
-
-if __name__ == "__main__":
-    wp = Wordpress("daimler_truck_results", "daimler_truck_results/wpscan")
-    #wp.getHttpx()
-    wp.allWpscan()

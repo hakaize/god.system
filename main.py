@@ -4,6 +4,7 @@ from initial_recon import Initial
 from vulns_parser import Parser
 from xss import Xss
 from dns import DNS
+from wpscan import Wordpress
 
 parser = argparse.ArgumentParser(description='Hakaize Bug Bounty Automation')
 parser.add_argument('-p', '--program', help='Programa de bugbounty para hacerle recon (sale arriba en la url)')
@@ -74,5 +75,8 @@ if __name__ == "__main__":
         xss_tester = Xss(folder_name, xss)
         xss_tester.detectXSS()
         xss_tester.reflectedXSS()
-
-   
+    
+    if "wpscan" in aggresive_scan:
+        wpscan_tester = Wordpress(folder_name, folder_wpscan)
+        wpscan_tester.getHttpx()
+        wpscan_tester.allWpscan()
