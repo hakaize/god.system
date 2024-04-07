@@ -51,6 +51,7 @@ class DNS():
             open(output_file, mode='a').close()
         # Limpiamos la mierda de arriba que creo para poder hacerle el anew
         os.system('rm {}'.format(os.path.join(self.folder_dns, "regulator_*")))
+        os.system('rm {}'.format(os.path.join(self.folder_results, "*.rules")))
         pattern = re.compile(r"httpx", re.IGNORECASE)
         for file in os.listdir(self.folder_dns):
             match = pattern.search(file)

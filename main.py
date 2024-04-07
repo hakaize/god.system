@@ -7,8 +7,8 @@ from dns import DNS
 from wpscan import Wordpress
 
 parser = argparse.ArgumentParser(description='Hakaize Bug Bounty Automation')
-parser.add_argument('-p', '--program', help='Programa de bugbounty para hacerle recon (sale arriba en la url)')
-parser.add_argument('-as', '--aggresivescan', default="xss,wpscan")
+parser.add_argument('-p', '--program', default="", help='Programa de bugbounty para hacerle recon (sale arriba en la url)')
+parser.add_argument('-as', '--aggresivescan', default="", help='as xss,wpscan')
 
 args = parser.parse_args()
 
@@ -20,6 +20,10 @@ folder_vulns = os.path.join(folder_name, "parsed_vulns")
 folder_wpscan = os.path.join(folder_name, "wpscan")
 folder_wordlists = os.path.join(folder_name, "wordlists")
 folder_dns = os.path.join(folder_name, "dns")
+
+if aggresive_scan == "" and program == "":
+    parser.print_help()
+    exit()
 
 def def_handler(sig, frame):
     print("\n[+] Saliendo...")
@@ -39,12 +43,12 @@ def passiveEnumeration():
     initial = Initial(folder_name)
     subfinder = Subfinder(program)
     dns = DNS(folder_name , folder_dns, 50)
-    parser = Parser(folder_name)
+    parser = Parser(folder_vulns)
     
     subfinder.leerDominios()
     subfinder.generarSubdominios() 
     while not subfinder.subdominios_generados:
-        pass  
+        pass  # Espera 1 segundo antes de verificar nuevamente
 
     dns.getResolvers()
     dns.getWordlist()
