@@ -6,15 +6,18 @@ from xss import Xss
 from dns import DNS
 
 parser = argparse.ArgumentParser(description='Hakaize Bug Bounty Automation')
-parser.add_argument('-x', '--xss', default = "")
 parser.add_argument('-p', '--program', help='Programa de bugbounty para hacerle recon (sale arriba en la url)')
+parser.add_argument('-as', '--aggresivescan', default="xss,wpscan")
 
 args = parser.parse_args()
 
-xss = args.xss
+aggresive_scan = args.aggresivescan
 program = args.program
+
 folder_name = program + "_results"
 folder_vulns = os.path.join(folder_name, "parsed_vulns")
+folder_wpscan = os.path.join(folder_name, "wpscan")
+folder_wordlists = os.path.join(folder_name, "wordlists")
 folder_dns = os.path.join(folder_name, "dns")
 
 def def_handler(sig, frame):
@@ -27,37 +30,49 @@ def createFolders():
         os.makedirs(folder_name)
         os.makedirs(folder_vulns)
         os.makedirs(folder_dns)
-        os.makedirs(os.path.join(folder_name, "wordlists"))
+        os.makedirs(folder_wpscan)
+        os.makedirs(folder_wordlists)
+        os.system('touch {}'.format(os.path.join(folder_name, "all_subdomains.txt")))
+    
+def passiveEnumeration():
+    initial = Initial(folder_name)
+    subfinder = Subfinder(program)
+    dns = DNS(folder_name , folder_dns, 50)
+    parser = Parser(folder_name)
+    
+    subfinder.leerDominios()
+    subfinder.generarSubdominios() 
+    while not subfinder.subdominios_generados:
+        pass  
+
+    dns.getResolvers()
+    dns.getWordlist()
+    dns.altDns()  
+    dns.regulator()
+    dns.resolveRegulator()
+    dns.resolvePureDns()
+    dns.appendAllSubdomains()
+    dns.clearOutput()
+    
+      
+    initial.getGau()
+    initial.getUro()
+    initial.getHttpx()
+
+    parser.detectSSRF()
+    parser.detectLFI()
+    parser.detectRedirect()
+    parser.detectRCE()
+    parser.detectSQLI()
+    parser.detectDebugLogic()
 
 if __name__ == "__main__":
     createFolders()
-    subfinder = Subfinder(program)
-    initial = Initial(folder_name)
-    dns = DNS(folder_name , folder_dns, 50)
-    parser = Parser(folder_name)
-    xss_tester = Xss(folder_name, xss)
+    passiveEnumeration()
 
-    #dns.getResolvers()
-    #dns.getWordlist()
-    #dns.altDns()  
-    #dns.regulator()
-    dns.resolveRegulator()
+    if "xss" in aggresive_scan:
+        xss_tester = Xss(folder_name, xss)
+        xss_tester.detectXSS()
+        xss_tester.reflectedXSS()
+
    
-    #dominios = subfinder.leerDominios()
-    #subfinder.generarSubdominios() 
-    #while not subfinder.subdominios_generados:
-    #    pass        
-    #initial.getGau()
-    #initial.getUro()
-    #initial.getHttpx()
-
-    #if xss != "":
-    #    xss_tester.detectXSS()
-    #xss_tester.reflectedXSS()
-    
-    #parser.detectSSRF()
-    #parser.detectLFI()
-    #parser.detectRedirect()
-    #parser.detectRCE()
-    #parser.detectSQLI()
-    #parser.detectDebugLogic()

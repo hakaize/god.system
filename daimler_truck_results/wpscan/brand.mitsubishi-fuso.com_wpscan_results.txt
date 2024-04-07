@@ -1,0 +1,101 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.25
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[32m[+][0m URL: https://brand.mitsubishi-fuso.com/?password-protected=login&redirect_to=https://brand.mitsubishi-fuso.com// [192.124.249.88]
+[32m[+][0m Effective URL: https://brand.mitsubishi-fuso.com/?password-protected=login&redirect_to=https%3A%2F%2Fbrand.mitsubishi-fuso.com%2F
+[32m[+][0m Started: Sun Apr  7 09:54:25 2024
+
+Interesting Finding(s):
+
+[32m[+][0m Headers
+ | Interesting Entries:
+ |  - server: nginx
+ |  - x-sucuri-id: 15038
+ |  - content-security-policy: upgrade-insecure-requests;, upgrade-insecure-requests
+ |  - x-cache-hit: MISS
+ |  - x-cacheable: YES:Forced
+ |  - x-cacheproxy-retries: 0/2
+ |  - x-fawn-proc-count: 1,13,24
+ |  - x-php-version: 8.1
+ |  - x-backend: varnish_ssl
+ |  - x-sucuri-cache: BYPASS
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[32m[+][0m robots.txt found: https://brand.mitsubishi-fuso.com/robots.txt
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m WordPress readme found: https://brand.mitsubishi-fuso.com/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m This site has 'Must Use Plugins': https://brand.mitsubishi-fuso.com/wp-content/mu-plugins/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 80%
+ | Reference: http://codex.wordpress.org/Must_Use_Plugins
+
+[32m[+][0m The external WP-Cron seems to be enabled: https://brand.mitsubishi-fuso.com/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[32m[+][0m WordPress version 6.4.3 identified (Outdated, released on 2024-01-30).
+ | Found By: Most Common Wp Includes Query Parameter In Homepage (Passive Detection)
+ |  - https://brand.mitsubishi-fuso.com/wp-includes/css/dashicons.min.css?ver=6.4.3
+ | Confirmed By:
+ |  Common Wp Includes Query Parameter In Homepage (Passive Detection)
+ |   - https://brand.mitsubishi-fuso.com/wp-includes/css/buttons.min.css?ver=6.4.3
+ |  Style Etag (Aggressive Detection)
+ |   - https://brand.mitsubishi-fuso.com/wp-admin/load-styles.php, Match: '6.4.3'
+
+[34m[i][0m The main theme could not be detected.
+
+[32m[+][0m Enumerating All Plugins (via Passive Methods)
+[32m[+][0m Checking Plugin Versions (via Passive and Aggressive Methods)
+
+[34m[i][0m Plugin(s) Identified:
+
+[32m[+][0m loginpress
+ | Location: https://brand.mitsubishi-fuso.com/wp-content/plugins/loginpress/
+ | Latest Version: 3.0.6 (up to date)
+ | Last Updated: 2024-03-30T21:55:00.000Z
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ | Confirmed By: Urls In 404 Page (Passive Detection)
+ |
+ | Version: 3.0.6 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - https://brand.mitsubishi-fuso.com/wp-content/plugins/loginpress/readme.txt
+ | Confirmed By: Readme - ChangeLog Section (Aggressive Detection)
+ |  - https://brand.mitsubishi-fuso.com/wp-content/plugins/loginpress/readme.txt
+
+[32m[+][0m Enumerating Config Backups (via Passive and Aggressive Methods)
+
+ Checking Config Backups -: |================================================================================================================================================================|
+
+[34m[i][0m No Config Backups Found.
+
+[33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
+[33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[32m[+][0m Finished: Sun Apr  7 09:59:34 2024
+[32m[+][0m Requests Done: 174
+[32m[+][0m Cached Requests: 3
+[32m[+][0m Data Sent: 44.619 KB
+[32m[+][0m Data Received: 420.167 KB
+[32m[+][0m Memory used: 233.27 MB
+[32m[+][0m Elapsed time: 00:05:09

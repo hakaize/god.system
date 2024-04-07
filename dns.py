@@ -61,8 +61,14 @@ class DNS():
     def allDomainsHttpx(self):
         os.system('cat {} | httpx -fr -sc -td -title -bp -silent -o {}'.format(os.path.join(self.folder_dns, "all_dns_subdomains.txt"),os.path.join(self.folder_dns, "all_dns_subdomains_httpx.txt")))
 
+    def appendAllSubdomains(self):
+        os.system('cat {} | anew {}'.format(os.path.join(self.folder_dns, "all_dns_subdomains_httpx.txt"), os.path.join(self.folder_results, "all_subdomains.txt")))
+        os.system('cat {} | anew {}'.format(os.path.join(self.folder_results, "subfinder_results.txt"),os.path.join(self.folder_results, "all_subdomains.txt")))
+
     def getResolvers(self):
         r = requests.get("https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt", verify=False)
         if r.status_code == 200:
             with open(os.path.join(self.folder_results, "wordlists","resolvers.txt"), 'w') as f:
                 f.write(r.text)
+
+
